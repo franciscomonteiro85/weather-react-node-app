@@ -11,7 +11,18 @@ function fetchData(cityId)
             }
             return response.json();
         })
-        .then(json => json["list"][0]["main"]["temp"])
+        .then(json => {
+            const temperatureData = {};
+            const dateData = {};
+
+            var weatherList = json["list"];
+            for(let i = 0; i < 10; i++)
+            {
+                temperatureData[`temp${i+1}`] = weatherList[i]["main"]["temp"];
+                dateData[`temp${i+1}`] = weatherList[i]["dt_txt"];
+            }
+            return {temperatureData, dateData};
+        })
         .catch(error => {
             console.error({ error: 'Fetch was not successful', details: error });
             throw error;
