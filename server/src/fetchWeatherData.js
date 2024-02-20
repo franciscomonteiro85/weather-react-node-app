@@ -16,7 +16,7 @@ function fetchData(cityId)
             const dateData = {};
 
             var weatherList = json["list"];
-            for(let i = 0; i < 10; i++)
+            for(let i = 0; i < weatherList.length; i++)
             {
                 temperatureData[`temp${i+1}`] = weatherList[i]["main"]["temp"];
                 dateData[`temp${i+1}`] = weatherList[i]["dt_txt"];

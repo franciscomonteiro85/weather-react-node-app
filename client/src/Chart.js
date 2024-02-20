@@ -4,14 +4,20 @@ import propTypes from 'prop-types';
 function Chart(props)
 {
     const temperatureList = props.temperature;
-    const dateList = props.date;
+    const dateArray = Object.values(props.date);
+    console.log(dateArray);
+    const dayList = [];
+    for(let i = 0; i < dateArray.length; i++)
+    {
+      dayList[i] = [dateArray[i].split(' ')[0], dateArray[i].split(' ')[1]];
+    }
+
     const chart = <CChartLine className="chart-weather"
             data = 
             {
                 {
-                    labels: dateList,
+                    labels: dayList,
                     datasets: [{
-                        label: '',
                         backgroundColor: 'transparent',
                         borderColor: 'rgba(0,0,0,.55)',
                         pointBackgroundColor: '#321fdb',
@@ -20,26 +26,32 @@ function Chart(props)
                 }
             }
             options={{
+                responsive: true,
                 plugins: {
                   legend: {
                     display: false,
                   },
+                  tooltip: {
+                    enabled: false,
+                  }
                 },
+                maintainAspectRatio: false,
                 scales: {
                   x: {
                     ticks: {
                       display: true,
-                      maxTicksLimit: 10,
+                      maxTicksLimit: 5,
                       maxRotation: 25,
                       font: {
-                        size: 12
+                        size: 8
                       }
-                    },
+                    }
                   },
                   y: {
+                    min: 0,
                     ticks: {
                         font: {
-                            size: 12
+                            size: 8
                         },
                     }
                   },
@@ -48,14 +60,11 @@ function Chart(props)
                   line: {
                     borderWidth: 1,
                     tension: 0.4,
-                  },
-                  point: {
-                    radius: 4,
-                    hitRadius: 10,
-                    hoverRadius: 4,
-                  },
-                },}}
-        />
+                  }
+                }
+              }
+            }
+          />
     return(chart);
 }
 

@@ -1,17 +1,23 @@
+import PortraitIcon from '@mui/icons-material/Portrait';
+import PopUp from "./PopUp.js";
+import React, {useState} from 'react';
+
 function Header()
 {
+    const [userName, setUserName] = useState('');
+
     return( 
         <header>
-            <h1>My website</h1>
-            <nav>
-                <ul>
-                    <li><a href="/#">Home</a></li>
-                    <li><a href="/#">About</a></li>
-                    <li><a href="/#">Services</a></li>
-                    <li><a href="/#">Contact</a></li>
-                </ul>
-            </nav>
-            <hr></hr>
+            <div className="header-row">
+                <h1 className="header-title">Weather Forecast Portugal</h1>
+                <nav className="header-nav">
+                    <ul className="header-list">
+                        <li className="header-item" className="user-icon"><PortraitIcon/></li>
+                        <p className="header-item">Welcome {userName || 'Guest'}</p>
+                        <li className="header-item"><PopUp setUserName={setUserName}/></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
     );
 }

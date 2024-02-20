@@ -2,7 +2,9 @@ function Footer()
 {
     return(
         <footer>
-            <p>&copy; {new Date().getFullYear()} Weather Check</p>
+            <div className="footer-row">
+                <p>&copy; {new Date().getFullYear()} Francisco Monteiro</p>
+            </div>
         </footer>
     );
 }
