@@ -5,13 +5,22 @@ function Chart(props)
 {
     const temperatureList = props.temperature;
     const dateArray = Object.values(props.date);
-    console.log(dateArray);
-    const dayList = [];
-    for(let i = 0; i < dateArray.length; i++)
+    var dayList = [];
+
+    // Split into two lines if there is the date and time
+    if (dateArray[0].split(' ')[1])
     {
-      dayList[i] = [dateArray[i].split(' ')[0], dateArray[i].split(' ')[1]];
+      for(let i = 0; i < dateArray.length; i++)
+      {
+        dayList[i] = [dateArray[i].split(' ')[0], dateArray[i].split(' ')[1]];
+      }
+    } 
+    else 
+    { 
+      dayList = dateArray; 
     }
 
+    // Weather chart with date and temperature of the forecasts
     const chart = <CChartLine className="chart-weather"
             data = 
             {
@@ -60,6 +69,10 @@ function Chart(props)
                   line: {
                     borderWidth: 1,
                     tension: 0.4,
+                  },
+                  point: {
+                    hoverRadius: 8,
+                    hitRadius: 1,
                   }
                 }
               }

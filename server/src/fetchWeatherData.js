@@ -1,6 +1,8 @@
 import { apiToken } from "./api-token.js"
 import fetch from 'node-fetch';
 
+// Script to fetch data from api
+
 function fetchData(cityId) 
 {
     const URL = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&APPID=${apiToken}&units=metric`;
@@ -16,6 +18,8 @@ function fetchData(cityId)
             const dateData = {};
 
             var weatherList = json["list"];
+
+            // Retrieve only temperature values and date
             for(let i = 0; i < weatherList.length; i++)
             {
                 temperatureData[`temp${i+1}`] = weatherList[i]["main"]["temp"];

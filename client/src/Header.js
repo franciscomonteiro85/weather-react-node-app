@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 
 function Header()
 {
-    const [userName, setUserName] = useState('');
+    const [userName, setUserName] = useState(''); // State to define User Name
 
     return( 
         <header>
@@ -12,7 +12,7 @@ function Header()
                 <h1 className="header-title">Weather Forecast Portugal</h1>
                 <nav className="header-nav">
                     <ul className="header-list">
-                        <li className="header-item" className="user-icon"><PortraitIcon/></li>
+                        <li className="header-item user-icon"><PortraitIcon/></li>
                         <p className="header-item">Welcome {userName || 'Guest'}</p>
                         <li className="header-item"><PopUp setUserName={setUserName}/></li>
                     </ul>

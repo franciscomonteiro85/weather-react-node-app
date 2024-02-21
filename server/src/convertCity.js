@@ -1,3 +1,4 @@
+// Convert city name to id for api fetching
 function convertCity(city)
 {
     switch(city)
